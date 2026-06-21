@@ -1,0 +1,157 @@
+---
+title: 'Double Spending Problem But Through The Eyes of Satoshi and Vitalik'
+publishedAt: '2023-04-30'
+author: 'Emre Aslan'
+summary: 'An explanation of the double spending problem and how different blockchain designs approach transparent and confidential prevention.'
+image: '/articles/article06.png'
+---
+
+# What is the Double Spending?
+
+Double spending is a problem that exists in digital currencies like Bitcoin. However, the double spending problem is not limited to digital currencies. Some online payment methods may face the risk of double spending, like digital currencies and electronic payment methods.
+
+For instance, when a user wants to use digital payment systems (credit cards, etc.) for shopping, the system may be able to confirm this. However, at this time, if the same user decides to make another purchase using the same payment system, the payment system may also approve this transaction, and double-spending may occur.
+
+In centralized banking systems, many times the problem of double spending was prevented. The best-known example of this is Davud Chaum's eCash from 1982.
+
+<div align="center">
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1679941648426/f89b36ee-2416-47e2-b03f-a0af30b04e97.png?auto=compress,format&format=webp)
+
+</div>
+
+Therefore, digital payment systems use different methods to combat the double-spending problem. For example, banks try to avoid double-spending by confirming user IDs for transaction approval and by recording every transaction in detail.
+
+Of course, there are some consequences to this simple and understandable purpose of banks. This causes some problems, like collecting the users' IDs in a pool and tracking the user transaction details.
+
+**_After all, why would anyone know the type of my coffee?_**
+
+# Satoshi's Measures and Bitcoin
+
+Let's go on a journey and go to October 31, 2008. It will be enough in the first two sentences to understand the importance of the double spending problem.
+
+<div align="center">
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1679941103761/5d12a3a8-8415-498e-b085-70479e6a5a19.png?auto=compress,format&format=webp)
+
+</div>
+
+> A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution. Digital signatures provide part of the solution, but the main benefits are lost if a trusted third party is still required to prevent double-spending.
+>
+> Bitcoin whitepaper-Satoshi Nakatomo
+
+Cryptocurrencies enable transactions without a central authority. These transactions are recorded on the blockchain and are validated by all users. If the same currency can be used to spend more than once, the system will be unreliable.
+
+For instance, when a user sends their own money to B, this transaction is recorded on the blockchain and validated by all network users. However, _at the same time_, if the _same user_ wants to send the _same bitcoin_ to C, only one transaction can be accepted.
+
+<div align="center">
+
+![](https://images.ctfassets.net/23aumh6u8s0i/1Kc8w02RAv9lmDgAAcPJSF/2d2edf99b8b4261a7b3da6dfb9e82329/Double-Spending-2-Final)
+
+</div>
+
+One transaction can be accepted, whereas another transaction will be rejected. In addition, miner choose between them. Of course, who [_pays the piper calls the tune_](https://context.reverso.net/%C3%A7eviri/ingilizce-t%C3%BCrk%C3%A7e/pays+the+piper+calls+the+tune).
+
+Thus, cryptocurrency projects use different ways to solve the double spending problem. Bitcoin uses a complex mathematical algorithm to ensure the accuracy of all transactions on the blockchain and prevents double spending by recording every transaction on the blockchain. That's why every created blockchain ecosystem starts its life by solving certain problems. Since Bitcoin can solve these fundamental problems, most blockchain projects have taken Bitcoin and its solutions as an example.
+
+## Solution 1: Blockchain
+
+One of the most well-known solutions for the double spending problem is blockchain technology. After Alice spends 1 BTC, she quickly wants to spend it again, but unfortunately, the first transaction is already recorded on the blockchain. This automatically cancels Alice's attempt to double-spend.
+
+Blockchain is an effective solution for this issue, but what would happen if Alice tried to double spend at the same time? This time, she would be successful, wouldn't she? To solve this problem, Nakatomo introduced the proof of work mechanism. In short, proof of work is when the transaction is verified by other nodes through the work done by miners. It takes time for miners to validate the transaction and find the correct nonce value. As a result, two transactions cannot be added to the blockchain at the same time, and the attempt to double spend fails. To protect against double spending, a waiting period of a minimum of 3-6 blocks is recommended due to the pow and pos mechanisms.
+
+<div align="left">
+
+![](https://bitpanda-academy.imgix.net/null03931e8c-7744-4ca5-9631-cb5115c6633d/Bitpanda-Infographics_4-double-spending.png?auto=compress%2Cformat&fit=min&fm=jpg&q=80&w=900)
+
+</div>
+
+In conclusion, blockchain technology is an effective solution for the double spending problem, and proof of work is one of the mechanisms used to ensure the accuracy and security of transactions. Through the work of miners, proof of work provides a way to prevent double spending and ensure that every transaction on the blockchain is accurate and secure. As blockchain technology continues to evolve, it is likely that new solutions will emerge to address the double spending problem and other challenges in the financial sector.
+
+## Solution 2: UTXOs
+
+Also, Bitcoin has UTXOs ID structure. Each transaction in Bitcoin can have more than one input or output. These inputs include references to the previous transaction.
+
+All outputs are named "**_Unspent Transaction Output_**" before being used. So, all outputs in a bitcoin address create a list UTXOs. Outputs are like spending tickets and are assigned to an address. If the user wants, he/she can spend his UTXO using his private key.
+
+<div align="center">
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1682778189680/6b446292-2735-4157-9bf9-022f6809451b.png)
+
+</div>
+
+A new operation produces an output made by referencing one or more UTXOs. This output is assigned to another Bitcoin address, and in fact, the whole point is to give the other party the right to spend free btc, not btc.
+
+<div align="center">
+
+![](https://pbs.twimg.com/media/FqEaqLcXwA0omh-?format=jpg&name=360x360)
+
+</div>
+
+Bitcoin's UTXO structure is used to avoid double spending. A UTXO can only be spent once, and a UTXO once spent cannot be used in any further transaction. The UTXOs structure is one of the solutions that prevents double spending by tracking wallet addresses.
+
+# Vitalik's Measures and Ethereum
+
+To combat this problem, Ethereum employs an account-based model for managing transactions. Each Ethereum account has a unique address, which is used to receive and send funds.
+
+<div align="center">
+
+![](https://th.bing.com/th/id/R.ff86b3feca369f05395a9d1352cb15bd?rik=vebW2ZeKngLK1Q&pid=ImgRaw&r=0)
+
+</div>
+
+The account structure is an essential feature of the Ethereum blockchain and ensures that transactions are secure and immutable.
+
+## Solution 1: Nonce
+
+One of the key concepts that Vitalik Buterin has emphasized in solving the Double Spending problem is Nonce. A nonce is a unique value that is included in every transaction sent from an Ethereum account. The purpose of the Nonce is to ensure that each transaction is unique and that it cannot be duplicated or replayed.
+
+The Nonce concept works by ensuring that every transaction sent from an Ethereum account is numbered in sequence. This means that each transaction will have a unique Nonce value, and it cannot be repeated or reused. The Ethereum network uses the Nonce value to validate the order of transactions, ensuring that the Double Spending problem is eliminated.
+
+Let's learn with Alice, Bob, and Charlie. Alice and Bob want to trade on Ethereum. Alice tells Bob that she wants to make an Ethereum transaction. While paying Bob, Alice tries to send the same amount of Ethereum to Charlie. Nonce allows each transaction to be uniquely identified, and we know that each address is equal to the number of transactions.
+
+<div align="center">
+
+![](https://i.imgflip.com/7jz734.jpg)
+
+</div>
+
+Since the nonce value will be equal in two operations, only one will be valid. Thus, the same operation cannot be done more than once and the Double Spending problem is eliminated.
+
+In conclusion, Vitalik Buterin's view on Double Spending and Ethereum Account Structure is that the Nonce concept is the best way to solve this problem. By using Nonce, Ethereum ensures that every transaction sent from an Ethereum account is unique and cannot be duplicated or replayed. The Nonce concept has revolutionized the way we view smart contracts and cryptocurrency transactions.
+
+# Popular Double Spending Attacks
+
+The best way to solve a problem is to behave like you are creating one. Let's spend money twice.
+
+## Race Attack
+
+A race attack is performed by sending a transaction to two different nodes. These nodes race to add own transactions to the blockchain. If the majority of nodes in the network approve the transaction of a node and reject transactions of other nodes, the double spending attempt has already failed.
+
+However, if the attacker has enough hash power, can send transactions to a lot of nodes and can compete for transactions at each node to be validated by the network. In this case, the attacker's double-spend attack can be successful. (51% Attack)
+
+<div align="center">
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1682855725778/ada5aebe-e009-4848-a6e9-43571972d097.png)
+
+</div>
+
+To counter the race attack, many cryptocurrencies use a series of verification steps on different parts of the blockchain to block transactions from being confirmed and thus prevent double-spend attacks. These may include mechanisms such as proof of work (PoW) and proof of stake (PoS). Because if the attacker has too many nodes and says, "Yes, this is my transaction," he can still succeed. Since PoW and PoS require cost and power, the attacker's effort will not be enough for the amount he earns, and thus he will find it unreasonable to attack.
+
+## Finney Attack
+
+In Finney Attack, the attacker first creates a block by mining and performs a transaction on that block. The transaction may appear designed to send Bitcoin to someone, but it is actually sent to the attacker's own wallet. Next, the attacker sends the block he created to the network and is competed by other nodes in the network for inclusion in the blockchain.
+
+If the block created by the attacker is added to the blockchain by other nodes in the network, the transaction is confirmed on the blockchain and Bitcoin is sent to the attacker's own wallet. Next, the attacker creates another transaction from his own wallet and sends it to the network. This transaction may look like the same Bitcoin was sent to the recipient in the previous transaction, but is actually sent to the attacker's own wallet.
+
+At this point, the attacker's goal is to confirm the second transaction before the previous block is confirmed. In this case, when the second transaction is confirmed, the previous transaction will already be confirmed on the blockchain and double spend has been incurred.
+
+Finney Attack requires a high computational power to mine and hence is usually performed by larger mining pools. To prevent such attacks, Bitcoin and other cryptocurrencies use a verification process to add new blocks to the blockchain, which requires a certain amount of time before a block is confirmed. This makes Finney Attacks more difficult by preventing attackers from quickly performing a double-spend action.
+
+# Conclusion
+
+In conclusion, the double spending problem has been a longstanding issue in the world of digital currencies. Satoshi's solution of using a blockchain and UTXOs paved the way for the creation of Bitcoin, which has revolutionized the way we think about money and financial transactions. Vitalik's approach of using a nonce in Ethereum added an extra layer of security to prevent double spending attacks.
+
+However, even with these measures in place, double spending attacks can still occur, as evidenced by the race and Finney attacks. It is important for developers and users to stay vigilant and take appropriate measures to prevent such attacks from occurring.
+
+Overall, the digital currency space is constantly evolving, and it is crucial for us to continue exploring innovative solutions to address the challenges that arise. As we continue to push the boundaries of what is possible with blockchain technology, we can look forward to a more secure and trustworthy financial system for everyone.

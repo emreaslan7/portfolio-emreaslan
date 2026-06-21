@@ -1,0 +1,193 @@
+---
+title: 'What are Rentables NFTs? Sample Smart Contract With EIP-4907'
+publishedAt: '2022-12-12'
+author: 'Emre Aslan'
+summary: 'A practical look at rentable NFTs through EIP-4907 and a simple Solidity smart contract example.'
+image: '/articles/article04.png'
+---
+
+# Introduction
+
+These days, NFTs are becoming more and more popular every day. NFT dynamics is not only on a reputable collectors' conversation, everyone talking about NFTs anymore.
+
+<div align="center">
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1670609858786/jTaGr0Y3B.gif)
+
+</div>
+
+According to DappRadar reports, NFT volume increased to $22 billion in the last 10 months. This is actually an indication that NFTs are starting to address more critical points, not just (PFP).
+
+These statics incredible for both inside and outside observers in the blockchain industry. But more importantly, the industry is in its infancy yet. So, there is a lot of way in front of NFTs.
+
+The opportunities provided by blockchain technology are leaving a huge mark on the industry, and it is impossible to know how much the NFT ecosystem will grow.
+
+> **_<mark class="bg-yellow-200 dark:bg-yellow-500/30">A quick note:</mark>_** If you are only interested in the technical side of the business. You can skip to the next sections
+
+# Rentable NFTs Solve Which Problem?
+
+In the early years when Ethereum was launched, the idea of a smart contract inspired people because it brought new innovations. Uploading code blocks into the blockchain was an unusual situation. Some developers started to search for problems with this solution and this went on for some time.
+
+> Yes you heard me right. Solutions to problems were being sought.
+
+Although lots of them were perfect problems almost all projects failed. Sometimes the meeting of the problem and the solution should be at the right time. Even, no one should have been looking for a problem to solve.
+
+One of the main reasons why Bitcoin has been at its peak all these years is this point that touches its life.
+
+So how did the growth and development of the NFT market bring us such problems? Many major NFT projects have generated incredible volume and have been valued. Now it is very difficult to own NFTs such as Bored Ape, Azuki, Doodles, CloneX, and people have to pay more to have the side rights that these collections bring.
+
+<div align="center">
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1670751533600/PesUovjMA.jfif)
+
+</div>
+
+For example, let's imagine a party with 10,000 tickets, which only includes users who own Bored Ape. Users who cannot attend the party despite having an NFT can rent their NFT to those who want to go to the party for a certain period of time and provide passive income.
+
+Simply put, although the idea of a rentable NFT appeared much earlier, it was not the right time, and now we are implementing this idea with EIP4907.
+
+# What is EIP-4907? DeFi Mechanism to NFT
+
+EIP-4907, reached the final state having passed all Ethereum Proposal stages. If you examine EIP-4907, you can read it [here](https://eips.ethereum.org/EIPS/eip-4907).
+
+In the following sections, we will take a look at the codes together.
+
+If you are not familiar with the EIP and its stages, you can read this article.
+
+%[https://emreaslan.hashnode.dev/what-are-the-ethereum-protocols-erc-eip]
+
+The proposal, written by Andres, Lance, and Shrug and created in March 2022, presents itself as an extension of EIP-721.
+
+As we all know, ordinary NFTs can only have one owner (owner). In EIP-4907, the situation is a little different. In EIP-4907, we do not give ownership of the NFT to the leasing wallet. Ownership continues to remain with the lessor, and the lessor takes the role of the user (user). Therefore, the user does not have access to features such as transfer and listing, he only leases the rights of the NFT.
+
+The NFT stays in the contract for the specified period of time and the user becomes the owner of the doNFT (non-transferable version of the rented NFT). When the time expires, the original NFT with the rental fee automatically returns to the owner's wallet and the owner does not pay any extra fee to claim.
+
+The doNFT, whose use is canceled, is burned.
+
+<div align="center">
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1670793225857/95WXlr3qv.png)
+
+</div>
+
+I think it is better understood with the table. Now let's look at the main functions of IEIP-4907.
+
+<div align="left">
+
+![](https://miro.medium.com/max/875/1*JyV3hL4BfkuSVeQDtFR7xg.png)
+
+</div>
+
+- **_updateUser :_**
+
+The UpdateUser(...) event is published when a new user is assigned to a tokenId, or when a tokenId user is updated.
+
+- **_setUser( tokenId, user, expires):_**
+
+In the setUser(...) function, the user is assigned for the specified period according to the given tokenId.
+
+- **_userOf( tokenId ) -> returns address :_**
+
+The userOf(...) function is the view function and returns the current owner of the NFT when it is called.
+
+- **_userExpires( tokenId ) -> returns uint256:_**
+
+The userExpires(...) function is also a view function and returns the time when the lease will end when it is called.
+
+# Let's Create Our NFT Project with EIP-4907
+
+In this section, we will develop a project consisting of rentable NFTs using IEIP-4907 at the basic level.
+
+> Note: Since the codes are for educational purposes, they may contain problematic, incomplete, or partial errors in terms of security.
+>
+> Please learn by focusing only on the basic sections.
+
+```solidity
+contract RentableNFT is ERC4907
+```
+
+İlk olarak erc4907’yi miras alarak RentableNFT adında bir kontrat oluşturuyoruz.
+
+```solidity
+uint256 public rentPriceforDay = 10000000000000000; //0.01 ether
+   struct RentableItem {
+      bool rentable;
+      uint256 amountPerDay;
+   }
+mapping(uint256 => RentableItem) public rentables;
+```
+
+- rentPriceforDay is the daily rental price of the NFT in our collection.
+- RentableItem shows the current rental status of our token.
+- With rentables, we map our NFTs with our struct structure according to their IDs.
+
+```solidity
+function mint() public{
+   currentTokenId.increment();
+   uint256 newItemId = currentTokenId.current();
+   _safeMint(whitelistmember(), newItemId);
+   rentables[newItemId] = RentableItem({
+      rentable: false,
+      amountPerDay: rentPriceforDay
+   });
+}
+```
+
+I assume you are already familiar with the Mint function. To explain the sections containing rentals inside the function, we can say that each NFT that was initially minted was mapped with our rentableitem structure with rentables mapping.
+
+In short, the rentable status of each minted NFT becomes false and becomes rentable.
+
+> ExtraNot: Please do not get stuck on who is calling the function and the required require situations. I just want to explain the rental situation.
+
+```solidity
+function setRentNFT(uint256 _tokenId, uint256 _amountPerDay) public {
+   require(_isApprovedOrOwner(_msgSender(), _tokenId), “Caller is not token owner nor approved”);
+   rentables[_tokenId].amountPerDay = _amountPerDay;
+}
+```
+
+Congratulations, all NFTs have been minted and even one user even wanted to rent his NFT. He called the setRentNFT function to rent his NFT and changed the daily rental price originally given. (Only the owner of the NFT can call this function)
+
+```solidity
+function setRentable(uint256 _tokenId, bool _rentable) public {
+   require(_isApprovedOrOwner(_msgSender(), _tokenId), "Caller is not token owner nor approved");
+   rentables[_tokenId].rentable = _rentable;
+}
+```
+
+The user can change the status of the token to be rented with the setRentable function. (Only the owner of the NFT can call this function)
+
+```solidity
+function rent(uint256 _tokenId, uint64 _expires) public payable virtual {
+   uint256 dueAmount = rentables[_tokenId].amountPerDay * _expires;
+   require(msg.value == dueAmount, “Uncorrect amount”);
+   require(userOf(_tokenId) == address(0), "Already rented");
+require(rentables[_tokenId].rentable, "Renting disabled for the NFT");
+   payable(ownerOf(_tokenId)).transfer(dueAmount);
+   UserInfo storage info = _users[_tokenId];
+   info.user = msg.sender;
+   info.expires = block.timestamp + (_expires * 60);
+   emit UpdateUser(_tokenId, msg.sender, _expires);
+}
+```
+
+When we look at our main function, we see a lot of expressions. Come on, let's explain briefly.
+
+- First, we determine the total price with dueAmount.
+- Then we check if the person who wants to rent can afford that price.
+- Then we check the status of the NFT previously rented.
+- If the user's permission to rent status is also valid, the dueAmount amount is reached by the owner.
+- User operations are also assigned and the default time is assigned.
+- The function is completed and emitted.
+
+In this simple example, a fixed time frame is set. But of course, you can build the infrastructure and create better jobs. You can also visit this [github address](https://github.com/sidarth16/Rentable-NFTs) for a more comprehensive and detailed example.
+
+# Conclusion
+
+If you've come this far without jumping, congratulations. You are now better equipped about the EIP-4907.
+
+NFTs are here to stay. In any case, they will affect all industries to varying degrees in the coming years. As a result, the NFT rental industry is poised to rise, enabling all participants in the Web3 economy to gain access to virtually any NFT, regardless of the underlying value of the original asset.
+
+NFTs are here to stay. In any case, they will affect all industries to varying degrees in the coming years. As a result, the NFT rental industry is poised to rise, enabling all participants in the Web3 economy to gain access to virtually any NFT, regardless of the underlying value of the original asset.
+
+NFT lenders can earn on their idle assets, NFT borrowers can leverage certain assets for a limited time to achieve a certain goal at a certain time, and NFTs will be used as they were built and as they should be used, and we will witness this all together.
