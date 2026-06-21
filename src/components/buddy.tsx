@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { RadialMenu } from '@/components/animate-ui/components/community/radial-menu';
 import { Smile, Brain, Keyboard, Moon, Activity, Music } from 'lucide-react'; // İkonları aksiyonlara göre güncelledik
 
@@ -53,6 +54,7 @@ function randomPosition() {
 type State = 'idle' | 'wandering' | 'acting' | 'dragging';
 
 export default function Buddy() {
+  const pathname = usePathname();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [gif, setGif] = useState(IDLE_GIFS[0]);
   const [state, setState] = useState<State>('idle');
@@ -196,11 +198,12 @@ export default function Buddy() {
   }, []);
 
   if (!mounted) return null;
+  if (pathname !== '/') return null;
 
   return (
     <div
       style={{
-        position: 'fixed',
+        position: 'absolute',
         left: position.x,
         top: position.y,
         zIndex: 9999,

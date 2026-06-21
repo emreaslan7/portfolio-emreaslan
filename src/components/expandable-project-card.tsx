@@ -137,7 +137,7 @@ export default function ExpandableProjectCard({ projects }: { projects: readonly
 
                           <motion.a
                             layoutId={`button-${active.title}-${id}`}
-                            href={active.links.find(l => l.type === 'Source')?.href || active.href}
+                            href={active.links.find((l) => l.type === 'Source')?.href || active.href}
                             target="_blank"
                             className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 bg-primary text-primary-foreground"
                           >
@@ -199,9 +199,10 @@ export default function ExpandableProjectCard({ projects }: { projects: readonly
             layoutId={`card-${project.title}-${id}`}
             key={`card-${project.title}-${id}`}
             onClick={() => setActive(project)}
-            className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
+            className="p-4 flex flex-col md:flex-row justify-between items-center
+             hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
           >
-            <div className="flex gap-4 flex-col md:flex-row flex-1 min-w-0">
+            <div className="flex gap-2 flex-col md:flex-row flex-1 min-w-0 items-center md:items-start">
               <motion.div layoutId={`image-${project.title}-${id}`}>
                 {project.video ? (
                   <video
@@ -210,7 +211,7 @@ export default function ExpandableProjectCard({ projects }: { projects: readonly
                     loop
                     muted
                     playsInline
-                    className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top"
+                    className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top border border-neutral-200 dark:border-neutral-700 md:border-0"
                   />
                 ) : (
                   <img
@@ -218,11 +219,11 @@ export default function ExpandableProjectCard({ projects }: { projects: readonly
                     height={100}
                     src={project.image || '/placeholder.png'}
                     alt={project.title}
-                    className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top"
+                    className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top border border-neutral-200 dark:border-neutral-700 md:border-0"
                   />
                 )}
               </motion.div>
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1 flex flex-col gap-1 md:gap-0 items-center md:items-start">
                 <motion.h3
                   layoutId={`title-${project.title}-${id}`}
                   className="font-medium text-neutral-800 dark:text-neutral-200 text-center md:text-left flex items-center gap-2 flex-wrap"
@@ -245,7 +246,7 @@ export default function ExpandableProjectCard({ projects }: { projects: readonly
                 </motion.span>
               </div>
             </div>
-            <div className="flex flex-row md:flex-col items-center md:items-end gap-1 md:gap-2 mt-4 md:mt-0 shrink-0">
+            <div className="flex flex-row md:flex-col mt-1 items-center md:items-end gap-1 md:gap-2 md:mt-0 shrink-0">
               <motion.button
                 layoutId={`button-${project.title}-${id}`}
                 className="px-2.5 py-1 rounded-full bg-primary text-primary-foreground text-[11px] font-semibold"
