@@ -72,7 +72,7 @@ export default function ExpandableProjectCard({ projects }: { projects: readonly
               </AnimatePresence>
               <AnimatePresence>
                 {active && (
-                  <div key="card" className="fixed inset-0 grid place-items-center z-[100]">
+                  <div key="card" className="fixed inset-0 grid place-items-center z-100">
                     <motion.button
                       key={`button-${active.title}-${id}`}
                       layout
@@ -90,7 +90,7 @@ export default function ExpandableProjectCard({ projects }: { projects: readonly
                     <motion.div
                       layoutId={`card-${active.title}-${id}`}
                       ref={ref}
-                      className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+                      className="w-full max-w-125 h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
                     >
                       <motion.div layoutId={`image-${active.title}-${id}`}>
                         {active.video ? (
@@ -122,7 +122,7 @@ export default function ExpandableProjectCard({ projects }: { projects: readonly
                             >
                               {active.title}
                               {active.isHackathonWinner && (
-                                <span className="bg-linear-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-[length:200%_auto] animate-shimmer text-[10px] font-bold px-2 py-0.5 rounded-full text-amber-950 leading-normal">
+                                <span className="bg-linear-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-size-[200%_auto] animate-shimmer text-[10px] font-bold px-2 py-0.5 rounded-full text-amber-950 leading-normal">
                                   Hackathon Winner
                                 </span>
                               )}

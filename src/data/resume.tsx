@@ -9,6 +9,7 @@ import { Docker } from '@/components/ui/svgs/docker';
 import { Javascript } from '@/components/ui/svgs/javascript';
 import { Tensorflow } from '@/components/ui/svgs/tensorflow';
 import { Keras } from '@/components/ui/svgs/keras';
+import { Pytorch } from '@/components/ui/svgs/pytorch';
 import { Mongodb } from '@/components/ui/svgs/mongodb';
 import { Redux } from '@/components/ui/svgs/redux';
 import { Solidity } from '@/components/ui/svgs/solidity';
@@ -21,8 +22,7 @@ export const DATA = {
   linkedin: 'https://www.linkedin.com/company/jotform/',
   browser: 'https://www.jotform.com/',
   locationLink: 'https://www.google.com/maps/place/Istanbul,+Turkey',
-  description:
-    'Software Developer focused on AI/ML, Web3, image processing, full-stack software development, and blockchain.',
+  description: 'Software Developer focused on AI/ML, Computer Vision, full-stack software development, and blockchain.',
   summary:
     'I am an Electrical and Electronics Engineering student with a strong foundation in programming, artificial intelligence, and image processing. I enjoy applying engineering principles to real-world challenges through hands-on AI, image processing, blockchain, and full-stack projects. I am currently focusing on deep learning, machine learning, and Web3 development while looking for opportunities to contribute to practical, innovative products.',
   avatarUrl: '/me.png',
@@ -32,6 +32,7 @@ export const DATA = {
     { name: 'Python', icon: Python },
     { name: 'TensorFlow', icon: Tensorflow },
     { name: 'Keras', icon: Keras },
+    { name: 'PyTorch', icon: Pytorch },
     { name: 'React', icon: ReactLight },
     { name: 'Next.js', icon: NextjsIconDark },
     { name: 'Node.js', icon: Nodejs },
@@ -101,6 +102,38 @@ export const DATA = {
 
   work: [
     {
+      company: 'Bluesense',
+      href: 'https://bluesense.ai/',
+      location: 'Istanbul, Turkey',
+      linkedin: 'https://www.linkedin.com/company/bluesense-ai/',
+      browser: 'https://bluesense.ai/',
+      logoUrl:
+        'https://media.licdn.com/dms/image/v2/D560BAQHFO-A_YolA1Q/company-logo_200_200/B56ZgE.536GUAQ-/0/1752430256065/bluesense_ai_logo?e=2147483647&v=beta&t=BLzUcG4ZAQX5hAfzxTPJJzed-jko9tWpIhclldtxPSo',
+      companyDuration: '1 month',
+      workMode: 'Hybrid',
+      roles: [
+        {
+          title: 'AI Engineer',
+          employmentType: 'Intern',
+          start: 'Jul 2026',
+          end: 'Present',
+          duration: '1 month',
+          location: 'Istanbul, Turkey',
+          linkedin: 'https://www.linkedin.com/company/bluesense-ai/',
+          browser: 'https://bluesense.ai/',
+          description: '',
+          // 'Developing and optimizing computer vision and machine learning models for the Smart Beauty platform, an AI-powered skincare analysis system. Implementing YOLO-based object detection for skin analysis, preprocessing large datasets, and setting up end-to-end ML pipelines for production.',
+          highlights: [
+            // 'Built and trained computer vision models for image recognition and skincare analysis using YOLO object detection.',
+            // 'Optimized model inference speed and accuracy for real-time skincare recommendations.',
+            // 'Preprocessed and cleaned large datasets to ensure data quality for robust model training.',
+            // 'Collaborated with UX/UI designers and engineers to integrate AI models into user-facing features.',
+            // 'Set up and maintained end-to-end ML pipelines in production environments.',
+          ],
+        },
+      ],
+    },
+    {
       company: 'Jotform',
       href: 'https://www.jotform.com/',
       location: 'Istanbul, Turkey',
@@ -146,6 +179,17 @@ export const DATA = {
       ],
     },
   ],
+  certifications: [
+    {
+      title: 'Deep Learning Specialization',
+      href: 'https://www.coursera.org/account/accomplishments/specialization/certificate/INSNAWGL1UUU',
+      issuer: 'DeepLearning.AI & Coursera',
+      date: '2025',
+      logoUrl: '/certificates/deeplearning-ai-logo.png',
+      image: '/certificates/deep-learning-specialization.png',
+      notesUrl: 'https://ai.emreaslan.dev',
+    },
+  ],
   education: [
     {
       school: 'Electrical and Electronics Engineering',
@@ -155,7 +199,7 @@ export const DATA = {
       logoUrl:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbOFzFUkzj60euBs5yYnfTVboO4qPlau-vJQqaF9x7j48vKE1d8mx6JIw&s=10',
       start: '2021',
-      end: '2026 (Expected)',
+      end: '2026',
     },
   ],
   projects: [
@@ -191,7 +235,7 @@ export const DATA = {
       active: true,
       description:
         'A PyQt5-based desktop application for automated analysis of angiography images and videos. Integrates YOLO-based object detection, semantic segmentation, and stenosis tracking to assist in evaluating vascular structures from interventional cardiology procedures.',
-      technologies: ['Python', 'PyQt5', 'OpenCV', 'TensorFlow', 'YOLO', 'PyTorch', 'NumPy', 'scikit-learn'],
+      technologies: ['Python', 'PyQt5', 'OpenCV', 'TensorFlow', 'YOLO', 'NumPy', 'scikit-learn'],
       links: [
         {
           type: 'Source',

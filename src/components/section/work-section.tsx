@@ -66,7 +66,89 @@ function RoleDetail({ role, isLast }: { role: WorkRole; isLast: boolean }) {
   );
 }
 
-function CompanyCard({ company }: { company: WorkCompany }) {
+function SingleRoleCard({ company, role }: { company: WorkCompany; role: WorkRole }) {
+  const [isOpen, setIsOpen] = useState(true);
+
+  return (
+    <TimelineItem className="w-full flex items-start gap-4">
+      <TimelineConnectItem className="flex items-start justify-center">
+        <LogoImage src={company.logoUrl} alt={company.company} />
+      </TimelineConnectItem>
+      <div className="flex-1 min-w-0 pb-8 last:pb-0">
+        <button onClick={() => setIsOpen(!isOpen)} className="w-full text-left group cursor-pointer">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-0.5">
+              <div className="flex items-center gap-2">
+                <h3 className="text-base sm:text-lg font-semibold leading-tight">{company.company}</h3>
+                <ChevronDown
+                  className={cn(
+                    'size-4 text-muted-foreground transition-transform duration-200',
+                    isOpen ? 'rotate-0' : '-rotate-90',
+                  )}
+                />
+              </div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h4 className="text-sm font-semibold text-foreground/80">{role.title}</h4>
+                <span className="text-[11px] text-muted-foreground bg-muted px-1.5 py-0.5 rounded-full leading-none font-medium">
+                  {role.employmentType}
+                </span>
+              </div>
+              <div className="flex flex-wrap items-center gap-x-1.5 text-sm text-muted-foreground">
+                <span>{role.start} &mdash; {role.end}</span>
+                {role.duration && <><span className="hidden sm:inline">&middot;</span><span>{role.duration}</span></>}
+                <span className="hidden sm:inline">&middot;</span>
+                <span>{company.workMode}</span>
+                <span className="hidden sm:inline">&middot;</span>
+                <span>{company.location}</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 shrink-0 pt-0.5">
+              {company.browser && (
+                <a
+                  href={company.browser}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-foreground transition-colors text-muted-foreground"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Icons.globe className="size-3.5" />
+                </a>
+              )}
+              {company.linkedin && (
+                <a
+                  href={company.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-foreground transition-colors text-muted-foreground"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Icons.linkedin className="size-3.5" />
+                </a>
+              )}
+            </div>
+          </div>
+        </button>
+        {isOpen && (
+          <div className="mt-4">
+            <p className="text-sm text-muted-foreground leading-relaxed">{role.description}</p>
+            {role.highlights?.length > 0 && (
+              <ul className="space-y-1 mt-3">
+                {role.highlights.map((highlight) => (
+                  <li key={highlight} className="flex gap-2 text-sm text-muted-foreground">
+                    <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-muted-foreground/40 shrink-0" />
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
+      </div>
+    </TimelineItem>
+  );
+}
+
+function MultiRoleCard({ company }: { company: WorkCompany }) {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
@@ -131,6 +213,13 @@ function CompanyCard({ company }: { company: WorkCompany }) {
       </div>
     </TimelineItem>
   );
+}
+
+function CompanyCard({ company }: { company: WorkCompany }) {
+  if (company.roles.length === 1) {
+    return <SingleRoleCard company={company} role={company.roles[0]} />;
+  }
+  return <MultiRoleCard company={company} />;
 }
 
 export default function WorkSection() {
