@@ -148,7 +148,7 @@ export const DATA = {
           title: 'Frontend Support Engineer',
           employmentType: 'Part-time',
           start: 'Nov 2025',
-          end: 'Present',
+          end: 'June 2026',
           duration: '8 months',
           location: 'Istanbul, Turkey',
           linkedin: 'https://www.linkedin.com/company/jotform/',
