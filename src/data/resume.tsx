@@ -24,7 +24,9 @@ export const DATA = {
   locationLink: 'https://www.google.com/maps/place/Istanbul,+Turkey',
   description: 'Software Developer focused on AI/ML, Computer Vision, full-stack software development, and blockchain.',
   summary:
-    'I am an Electrical and Electronics Engineering student with a strong foundation in programming, artificial intelligence, and image processing. I enjoy applying engineering principles to real-world challenges through hands-on AI, image processing, blockchain, and full-stack projects. I am currently focusing on deep learning, machine learning, and Web3 development while looking for opportunities to contribute to practical, innovative products.',
+    `I am a Software Engineer and Electrical & Electronics Engineering graduate dedicated to the fields of Deep Learning and Computer Vision. My expertise is rooted in transforming theoretical AI models into highly functional, real-world applications.
+    By combining my knowledge of hardware mechanics with advanced software architecture, I design systems that solve complex problems. My experience spans across developing deep learning pipelines for medical analysis, building hardware-integrated computer vision prototypes, and engineering scalable software infrastructures.
+    Ultimately, I am driven by the challenge of bridging the gap between cutting-edge AI research and robust, production-ready software engineering.`,
   avatarUrl: '/me.png',
   skills: [
     { name: 'JavaScript', icon: Javascript },
@@ -187,7 +189,17 @@ export const DATA = {
       date: '2025',
       logoUrl: '/certificates/deeplearning-ai-logo.png',
       image: '/certificates/deep-learning-specialization.png',
-      notesUrl: 'https://ai.emreaslan.dev',
+      notesUrl: 'https://www.ai.emreaslan.dev/deep-learning-specialization/',
+    },
+    {
+      title: 'First Principles of Computer Vision',
+      href: 'https://www.coursera.org/specializations/firstprinciplesofcomputervision',
+      issuer: 'Columbia University & Coursera',
+      date: '2025',
+      logoUrl: '/certificates/cu-collegiate-blue-logo.png',
+      image: undefined,
+      notesUrl: 'https://www.ai.emreaslan.dev/first-principles-of-computer-vision/',
+      status: 'in-progress',
     },
   ],
   education: [
