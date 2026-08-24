@@ -1,5 +1,5 @@
 import { Icons } from '@/components/icons';
-import { HomeIcon, NotebookIcon, LibraryBig, Sparkles, Pi } from 'lucide-react';
+import { HomeIcon, NotebookIcon, LibraryBig, Sparkles, Pi, Code2 } from 'lucide-react';
 import { ReactLight } from '@/components/ui/svgs/reactLight';
 import { NextjsIconDark } from '@/components/ui/svgs/nextjsIconDark';
 import { Typescript } from '@/components/ui/svgs/typescript';
@@ -57,6 +57,7 @@ export const DATA = {
     links: [
       { href: 'https://ai.emreaslan.dev', label: 'AI', icon: Sparkles },
       { href: 'https://cryptomath.emreaslan.dev', label: 'CryptoMath', icon: Pi },
+      { href: 'https://software.emreaslan.dev', label: 'Software', icon: Code2 },
     ],
   },
   contact: {
