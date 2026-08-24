@@ -193,13 +193,12 @@ export const DATA = {
     },
     {
       title: 'First Principles of Computer Vision',
-      href: 'https://www.coursera.org/specializations/firstprinciplesofcomputervision',
+      href: 'https://coursera.org/share/c55b3b8ec425694695c1711202dcda1a',
       issuer: 'Columbia University & Coursera',
-      date: '2025',
+      date: '2026',
       logoUrl: '/certificates/cu-collegiate-blue-logo.png',
-      image: undefined,
+      image: '/certificates/computer-vision-certificate.png',
       notesUrl: 'https://www.ai.emreaslan.dev/first-principles-of-computer-vision/',
-      status: 'in-progress',
     },
   ],
   education: [
