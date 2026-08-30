@@ -10,6 +10,7 @@ import ContactSection from '@/components/section/contact-section';
 import HackathonsSection from '@/components/section/hackathons-section';
 import ProjectsSection from '@/components/section/projects-section';
 import WorkSection from '@/components/section/work-section';
+import GithubContributionsSection from '@/components/section/github-contributions-section';
 import { Icons } from '@/components/icons';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -77,7 +78,8 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section id="about">
+      <GithubContributionsSection />
+      <section id="about" className="-mt-6 sm:-mt-8">
         <div className="flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <h2 className="text-xl font-bold">About</h2>
