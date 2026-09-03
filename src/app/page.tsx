@@ -9,6 +9,7 @@ import CertificationsSection from '@/components/section/certifications-section';
 import ContactSection from '@/components/section/contact-section';
 import HackathonsSection from '@/components/section/hackathons-section';
 import ProjectsSection from '@/components/section/projects-section';
+import KnowledgeVaultSection from '@/components/section/knowledge-vault-section';
 import WorkSection from '@/components/section/work-section';
 import GithubContributionsSection from '@/components/section/github-contributions-section';
 import { Icons } from '@/components/icons';
@@ -167,6 +168,7 @@ export default function Page() {
           <ProjectsSection />
         </BlurFade>
       </section>
+      <KnowledgeVaultSection />
       {/* <section id="hackathons">
         <BlurFade delay={BLUR_FADE_DELAY * 13}>
           <HackathonsSection />
