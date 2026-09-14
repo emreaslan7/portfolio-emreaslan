@@ -190,7 +190,7 @@ export const DATA = {
       date: '2025',
       logoUrl: '/certificates/deeplearning-ai-logo.png',
       image: '/certificates/deep-learning-specialization.png',
-      notesUrl: 'https://www.ai.emreaslan.dev/deep-learning-specialization/',
+      notesUrl: 'https://ai.emreaslan.dev/deep-learning-specialization/',
     },
     {
       title: 'First Principles of Computer Vision',
@@ -199,7 +199,7 @@ export const DATA = {
       date: '2026',
       logoUrl: '/certificates/cu-collegiate-blue-logo.png',
       image: '/certificates/computer-vision-certificate.png',
-      notesUrl: 'https://www.ai.emreaslan.dev/first-principles-of-computer-vision/',
+      notesUrl: 'https://ai.emreaslan.dev/first-principles-of-computer-vision/',
     },
   ],
   education: [
